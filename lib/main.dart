@@ -14,7 +14,10 @@ class app1 extends StatefulWidget
   class app1_state extends State<app1>{
   @override
   Widget build(BuildContext context) {
-    return mScreen();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'litebulb',
+      home: mScreen(),
+    );
   }
-
-  }
+}

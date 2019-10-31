@@ -12,7 +12,7 @@ class mScreen extends StatefulWidget{
 class mScreenState extends State<mScreen>{
   @override
   Widget build(BuildContext context) {
-    checkUseId();
+    //checkUseId();
     return Scaffold(
       appBar: AppBar(
               title: Center(
@@ -26,8 +26,8 @@ class mScreenState extends State<mScreen>{
   }
   void checkUseId()
   async{ 
-    if(useId==null)
-     {await(loginId(context));
+    if(useId==null||useId=="")
+     {loginId(context);
       setState(() {});
      }
   }
