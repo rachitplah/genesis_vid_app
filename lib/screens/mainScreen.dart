@@ -13,14 +13,41 @@ class mScreenState extends State<mScreen>{
   @override
   Widget build(BuildContext context) {
     //checkUseId();
+    List data;
     return Scaffold(
       appBar: AppBar(
-              title: Center(
-                child: Text("litebulb.in"),
-              ),
+              title: //Text("litebulb.in"),
+              Image.asset('assets/images/litebulb.png',height: 43.5,width: 100,),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.person_add),
+                  onPressed: (){
+                      checkUseId();
+                  },
+                ),
+              ],
       ),
+    
       body: Material(
-        child: Text("Hello"),
+       // child: Text("Hello"),
+       child:     AnimatedList(
+                                     initialItemCount: data==null ? 0 : data.length,
+                                     itemBuilder: (BuildContext context,int index,Animation animation)
+                                     {
+                                       return
+                                        Container(
+                                           child: 
+                                             Card(
+                                                child:
+                                                    ListTile(
+                                                    leading: Icon(Icons.check_circle,),
+                                                    dense: true,
+                                                    title: Text(data[index]['description'],style: TextStyle(fontSize: 19.0),),
+                                                    trailing: Text("Hi"),
+                                                   ),),
+                                              );
+                                      },
+                                   ),
       ),
     );
   }

@@ -72,10 +72,12 @@ class LoginScreen1State extends State<LoginScreen1>{
                        child:
               Column(
                 children: <Widget>[
+                                //Image.asset('assets/images/litebulb.png',height: 87,width: 200,),
+
                   Text(
                     "litebulb.in",
                     style: TextStyle(
-                        fontSize: 25.0,
+                        fontSize: 50.0,
                         fontWeight: FontWeight.bold,
                         color: this.primaryColor,
                         shadows: [
