@@ -3,6 +3,8 @@ import 'package:genesis_vid_app/screens/loginScreen.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:genesis_vid_app/screens/playerScreen.dart';
+
 String useId="";
 
 class mScreen extends StatefulWidget{
@@ -73,6 +75,7 @@ class mScreenState extends State<mScreen>{
                                        GestureDetector(
                                          onTap:(){
                                               print("clicked clicked");
+                                              navigateToPlayer(mydata[index]['id']);
                                          },
                                          child:
                                         Container(
@@ -129,6 +132,12 @@ class mScreenState extends State<mScreen>{
      useId=await Navigator.push(context,MaterialPageRoute(builder: (context) {
        return LoginScreen1();
      }));
+  }
+  void navigateToPlayer(var aa)
+  {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+        return playerScreen(aa);
+    }));
   }
 
 }
