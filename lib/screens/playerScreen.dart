@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genesis_vid_app/component/player.dart';
 import 'dart:convert';
 
 class playerScreen extends StatefulWidget{
@@ -21,24 +22,22 @@ class playerScreenState extends State<playerScreen>{
      },
       child:
     Scaffold(
-      body:Material(
-        child: Text("Hello $dataid"),
-        /*
+      body:Material(    
         child: FutureBuilder(
          future: DefaultAssetBundle.of(context).loadString('assets/samplefiles/sample_list.json'),
          builder: (context,snapshot){
               mydata=json.decode(snapshot.data.toString());
-              return Text("Hello "+dataid);
-              
+              return //Text("Hello $dataid");
+              VideoPlayerScreen(fun1(dataid));
               //fun1(dataid);
          },
-        ),*/
+        ),
       ),
       ),
       );
   }
-  /*
-    Text fun1(var dataid)
+  
+    String fun1(var dataid)
     {
         int l=mydata.length;
         int i;
@@ -47,8 +46,9 @@ class playerScreenState extends State<playerScreen>{
           if(mydata[i]['id']==dataid)
           break;
         }
-        return Text("Hello "+mydata[i]['id']);
-    }*/
+        var a=mydata[i]['url'];
+        return a.toString();
+    }
     void moveToLastScreen(BuildContext context)
   { //String ss="";
     Navigator.pop(context);
