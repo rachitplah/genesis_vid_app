@@ -14,6 +14,7 @@ class playerScreenState extends State<playerScreen>{
   var dataid;
   var mydata;
   int ind=0;
+  int indt;
   playerScreenState(this.dataid);
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,48 @@ class playerScreenState extends State<playerScreen>{
                            child: 
                                    VideoPlayerScreen(fun1(dataid)),
                          ),
+                  //Container(
+                    //height: (MediaQuery.of(context).size.height)*(3/4),
+                    //child:
+                  
+                  
                   Container(
                     height: (MediaQuery.of(context).size.height)*(3/4),
-                    child:
+                    width: MediaQuery.of(context).size.width,
+                    child: ListView.builder(
+                                     //initialItemCount: data==null ? 0 : data.length,
+                                     itemCount: mydata==null ? 0 : mydata.length,
+                                     itemBuilder: (BuildContext context,int index)
+                                     {
+                                       return funBuilder1(index);
+                                       
+                                      },
+                                   ),
+                  ),
+                
+                  //),
                   
-                  ListView(
+                ],
+              );
+              
+              //VideoApp(dataid);
+              //fun1(dataid);
+         },
+        ),
+      ),
+      ),
+      );
+  }
+    Container funBuilder1(int index)
+    {
+      //if(ind!=0)
+      indt=0;
+      if (index==0)
+      {
+      return
+      Container(
+        child:
+      Column(
                     children: <Widget>[
                       Container(
                     child:
@@ -73,16 +111,15 @@ class playerScreenState extends State<playerScreen>{
                                                         ),
                     ),
                   ),
-                  Container(
-                    height: 400.0,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                                     //initialItemCount: data==null ? 0 : data.length,
-                                     itemCount: mydata==null ? 0 : mydata.length,
-                                     itemBuilder: (BuildContext context,int index)
-                                     {
-                                       return
-                                       GestureDetector(
+                    ],),);
+      }
+    
+      else if(index!=ind)
+      {
+      return
+      Container(
+        child:
+                            GestureDetector(
                                          onTap:(){
                                               print("clicked clicked");
                                              // navigateToPlayer(mydata[index]['id']);
@@ -141,26 +178,77 @@ class playerScreenState extends State<playerScreen>{
                                                     
                                                    ),
                                         ),
-                                              );
-                                      },
-                                   ),
-                  ),
+                                  ),
+                                 );
+    }
+    else if((index==ind)&&(index!=0))
+    {
+      return
+      Container(
+        child:
+                            GestureDetector(
+                                         onTap:(){
+                                              print("clicked clicked");
+                                             // navigateToPlayer(mydata[index]['id']);
+                                         },
+                                         child:
+                                        Container(
+                                           child: 
+                                             Card(
+                                                child:
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          constraints: BoxConstraints.expand(
+                                                            height: 90.0,
+                                                            width:  MediaQuery.of(context).size.width/2.05,
+                                                          ),
+                                                          alignment: Alignment.bottomRight,
+                                                          padding: EdgeInsets.only(right: 16.0,bottom: 8.0),
+                                                          decoration: BoxDecoration(
+                                                            image: DecorationImage(
+                                                              image: NetworkImage(mydata[indt]['image']),
+                                                              
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          child: Text(mydata[indt]['timer'],style: TextStyle(backgroundColor: Colors.black,color: Colors.white,),),
+                                                        ),
+                                                        Container(
+                                                          height: 90.0,
+                                                          width: MediaQuery.of(context).size.width/2.05,
+                      
+                                                          child:
+                                                          
+                                                        ListTile(
+                                                          dense: true,
+                                                          
+                                                          title: Text(mydata[indt]['description'],style: TextStyle(fontSize: 12.0),),
+                                                          subtitle: 
+                                                          Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: <Widget>[
+                                                          Text(mydata[indt]['channel'],textAlign: TextAlign.right,),
+                                                          Text(mydata[indt]['views'],),
 
-                    ],
-                  ),
-                  ),
-                  
-                ],
-              );
-              
-              //VideoApp(dataid);
-              //fun1(dataid);
-         },
-        ),
-      ),
-      ),
-      );
-  }
+                                                           ],
+                                                          ),
+                                                          
+                                                         // isThreeLine: true,
+                                                          trailing: Icon(Icons.arrow_drop_down,),
+                                                        ),
+
+                                                          
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    
+                                                   ),
+                                        ),
+                                  ),
+                                 );
+    }
+    }
   
     String fun1(var dataid)
     {
