@@ -123,6 +123,12 @@ class playerScreenState extends State<playerScreen>{
                                          onTap:(){
                                               print("clicked clicked");
                                              // navigateToPlayer(mydata[index]['id']);
+                                             //playerScreen(mydata[index]['id']);
+                                             
+                                             setState(() {
+                                               this.dataid=mydata[index]['id'];
+                                               //playerScreenState(mydata[index]['id']);
+                                              });
                                          },
                                          child:
                                         Container(
@@ -190,6 +196,12 @@ class playerScreenState extends State<playerScreen>{
                                          onTap:(){
                                               print("clicked clicked");
                                              // navigateToPlayer(mydata[index]['id']);
+                                            // playerScreen(mydata[indt]['id']);
+                                             
+                                             setState(() {
+                                               this.dataid=mydata[indt]['id'];
+                                               //playerScreenState(mydata[indt]['id']);
+                                              });
                                          },
                                          child:
                                         Container(

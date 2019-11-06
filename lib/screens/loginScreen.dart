@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genesis_vid_app/screens/signupScreen.dart';
 
 class LoginScreen1 extends StatefulWidget{
   @override
@@ -48,12 +49,18 @@ class LoginScreen1State extends State<LoginScreen1>{
           ClipPath(
             clipper: MyClipper(),
             child: Container(
+              /*
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: this.backgroundImage,
                   fit: BoxFit.cover,
                 ),
-              ),
+              ),*/
+              decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(30.0),
+                         color: Colors.blue[400],
+                    
+                       ),
               alignment: Alignment.center,
               padding: EdgeInsets.only(top: 150.0, bottom: 100.0),
               child: 
@@ -62,7 +69,8 @@ class LoginScreen1State extends State<LoginScreen1>{
                              
                              decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(30.0),
-                         color: Colors.white.withOpacity(0.5),
+                         color: Colors.white.withOpacity(0.7),
+                         border: Border.all(color: Colors.white,width: 5.0,),
                          //border: Border.all(
                            //     color: Colors.blue[400],
                              //   width: 2.0,
@@ -72,8 +80,8 @@ class LoginScreen1State extends State<LoginScreen1>{
                        child:
               Column(
                 children: <Widget>[
-                                //Image.asset('assets/images/litebulb.png',height: 87,width: 200,),
-
+                                Image.asset('assets/images/litebulb.png',height: 87,width: 200,),
+                  /*
                   Text(
                     "litebulb.in",
                     style: TextStyle(
@@ -99,7 +107,7 @@ class LoginScreen1State extends State<LoginScreen1>{
                              ),
                         ],
                         ),
-                  ),
+                  ),*/
                 ],
               ),
               ),
@@ -235,7 +243,7 @@ class LoginScreen1State extends State<LoginScreen1>{
                         style: TextStyle(color: this.primaryColor),
                       ),
                     ),
-                    onPressed: () => {},
+                    onPressed: () => navigateToSignUp(),
                   ),
                 ),
               ],
@@ -254,6 +262,12 @@ class LoginScreen1State extends State<LoginScreen1>{
   void moveToLastScreen(BuildContext context)
   { String ss=emailTController.text;
     Navigator.pop(context,ss);
+  }
+  void navigateToSignUp()
+  {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+        return SignUpScreen();
+    }));
   }
 }
 
