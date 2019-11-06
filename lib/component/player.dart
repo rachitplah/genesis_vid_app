@@ -1,5 +1,7 @@
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:genesis_vid_app/neeko/lib/neeko.dart';
+import 'package:flutter/services.dart';
 
 
 class VideoApp extends StatefulWidget {
@@ -139,6 +141,80 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+
+class NeekoP extends StatefulWidget {
+  var datid;
+  NeekoP(this.datid);
+
+  @override
+  NeekoPState createState() => NeekoPState(this.datid);
+}
+
+class NeekoPState extends State<NeekoP> {
+  var datid;
+  NeekoPState(this.datid);
+
+// static const String beeUri = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+ // static const String beeUri ='http://vfx.mtime.cn/Video/2019/03/09/mp4/190309153658147087.mp4';
+
+//static const String beeUri = datid;
+
+   VideoControllerWrapper videoControllerWrapper = VideoControllerWrapper(
+      DataSource.network(
+          'http://litebulb.in/storage/media/6be3fa8b596aa8f04f37f276e9dce493.mp4',
+          //datid,
+          ));
+          
+   
+   /*
+   VideoControllerWrapper(
+      DataSource.network(
+          //'http://vfx.mtime.cn/Video/2019/03/09/mp4/190309153658147087.mp4',
+          datid,
+          displayName: "displayName"));*/
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.restoreSystemUIOverlays();
+    super.dispose();
+  }
+
+  
+
+  @override
+  Widget build(BuildContext context) {
+  
+    return Scaffold(
+      body: NeekoPlayerWidget(
+        onSkipNext: () {
+          print("skip");
+          videoControllerWrapper.prepareDataSource(DataSource.network(
+              //"http://vfx.mtime.cn/Video/2019/03/12/mp4/190312083533415853.mp4",
+              datid,
+          ));
+        },
+        videoControllerWrapper: videoControllerWrapper,
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.share,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                print("share");
+              })
+        ],
+      ),
     );
   }
 }
