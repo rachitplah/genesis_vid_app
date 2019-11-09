@@ -14,7 +14,7 @@ This project aims at providing video content to users of the app. The users can 
 * Its purpose is to browse videos and choose one and play it.
 
 ### Player screen: 
-#### This is the player screen where a video playa:
+#### This is the player screen where a video plays:
 <p align="center">
   <img src="https://github.com/rachitplah/genesis_vid_app/blob/master/screenshots/player_screen.jpg" height="500" alt="Player Screen">
 </p>
