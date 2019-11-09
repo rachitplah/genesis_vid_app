@@ -20,7 +20,7 @@ This project aims at providing video content to users of the app. The users can 
 </p>
 
 * This screen plays selected videos as well as gives suggestions to play the next video.
-* It generally uses neeko player for playing videos, there's code for other simple video players as well.
+* It generally uses <a href="https://github.com/OpenFlutter/neeko">neeko player</a> for playing videos, there's code for other simple video players as well.
 * It also uses ListBuilder to suggest next video suggestion.
 ### Login Screen:
 #### This is the login screen page:
